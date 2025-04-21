@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css" integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>shop.co</title>
+  
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    /* Navigation styles */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f8f8f8;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav section.little {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    nav section {
+      display: flex;
+      align-items: center;
+    }
+
+    nav section ul {
+      list-style-type: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav section ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    nav section ul li a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+
+    nav section input[type="search"] {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      width: 200px;
+      transition: all 0.3s ease;
+    }
+
+    nav section input[type="search"]:focus {
+      outline: none;
+      border-color: #343434;
+      width: 220px;
+    }
+
+    nav section img {
+      width: 24px;
+      height: 24px;
+    }
+
+    nav section img:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Header styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 2rem;
+      background-color: #f8f8f8;
+      flex-wrap: wrap;
+    }
+
+    header section {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    header section h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    header section small {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: block;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    header section div {
+      margin-top: 2rem;
+    }
+
+    header section div a {
+      padding: 0.8rem 2.5rem;
+      background-color: #343434;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    header section div a:hover {
+      background-color: #555;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header section img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    header section img:hover {
+      cursor: pointer;
+    }
+
+    header section ul {
+      list-style-type: none;
+      display: flex;
+      gap: 2rem;
+      padding: 0;
+      margin-top: 2rem;
+    }
+
+    header section ul li {
+      font-size: 2rem;
+      font-weight: bold;
+      position: relative;
+    }
+
+    header section ul li::after {
+      content: "International Brands";
+      display: block;
+      font-size: 0.8rem;
+      font-weight: normal;
+      margin-top: 0.2rem;
+      color: #666;
+    }
+
+    header section ul li:nth-child(2)::after {
+      content: "Happy Customers";
+    }
+
+    header section ul li:nth-child(3)::after {
+      content: "Products Sold";
+    }
+
+    /* Brands section */
+    section.brands {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: black;
+      flex-wrap: wrap;
+    }
+
+    section.brands p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin: 0;
+    }
+    
+    /* New Arrivals section */
+    section.new-arrivals {
+      padding: 4rem 2rem;
+      text-align: center;
+      background-color: #fff;
+    }
+    
+    section.new-arrivals p {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    section.new-arrivals p:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: #343434;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Product Item styles */
+    .product-item {
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding-bottom: 1rem;
+    }
+    
+    .product-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .product-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .product-item p {
+      padding: 0 1rem;
+      margin: 0.7rem 0;
+    }
+    
+    .product-item p:nth-child(2) {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .product-item p:nth-child(3) {
+      color: #333;
+      font-weight: bold;
+    }
+    
+    .product-item p:last-child {
+      margin-bottom: 1rem;
+    }
+
+    /* Style Container Product */
+    section.style-container-product {
+      background-color: #f8f8f8;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 2rem 2rem;
+      border-radius: 1.5rem;
+    }
+    
+    section.style-container-product h2 {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    section.style-container-product h2:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: #343434;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .product-container {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .dress-item {
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url('https://placehold.co/200');
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .dress-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .dress-item p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      margin: 0;
+      padding: 0.7em 1.5em;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-top-right-radius: 1rem;
+    }
+    
+    #product-item-casual {
+      grid-column: span 3 / span 3;
+    }
+    
+    #product-item-formal {
+      grid-column: span 4 / span 4;
+    }
+    
+    #product-item-party {
+      grid-column: span 4 / span 4;
+    }
+    
+    #product-item-gym {
+      grid-column: span 3 / span 3;
+    }
+
+    /* Customer Reviews */
+    section.customer-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    
+    section.customer-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    section.customer-section h1:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background-color: #343434;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    section.customer-review-item {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    section.customer-review {
+      background-color: #ffffff;
+      padding: 2rem;
+      text-align: left;
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    section.customer-review:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    section.customer-review small {
+      margin-bottom: 1rem;
+      color: #ffb800;
+    }
+    
+    section.customer-review h3 {
+      margin: 0 0 1rem 0;
+      font-size: 1.3rem;
+    }
+    
+    section.customer-review q {
+      color: #666;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Newsletter */
+    section.newsletter {
+      background-color: #0c0c0c;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 3rem 2rem;
+      border-radius: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    section.newsletter h1 {
+      color: #ffffff;
+      font-size: 2rem;
+      margin: 0;
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+    }
+    
+    section.newsletter form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    section.newsletter form input[type="email"] {
+      padding: 1rem 1.5rem;
+      border-radius: 30px;
+      border: none;
+      width: 100%;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    section.newsletter form input[type="email"]:focus {
+      outline: none;
+    }
+    
+    section.newsletter form button[type="submit"] {
+      padding: 1rem 1.5rem;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      text-decoration: none;
+      border-radius: 30px;
+      width: 100%;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    section.newsletter form button[type="submit"]:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f8f8f8;
+      padding: 4rem 2rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    
+    footer section.footer {
+      grid-column: span 1;
+    }
+    
+    footer section.footer strong {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    
+    footer section.footer q {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      display: block;
+      line-height: 1.5;
+      color: #777;
+    }
+    
+    footer section.footer ul {
+      list-style-type: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    
+    footer section.footer ul li a img {
+      width: 32px;
+      height: 32px;
+      transition: opacity 0.3s ease;
+    }
+    
+    footer section.footer ul li a img:hover {
+      opacity: 0.8;
+    }
+    
+    footer section.footer-company,
+    footer section.footer-support,
+    footer section.footer-connect {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    footer section.footer-company strong,
+    footer section.footer-support strong,
+    footer section.footer-connect strong {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    
+    footer section.footer-company p,
+    footer section.footer-support p,
+    footer section.footer-connect p {
+      font-size: 0.9rem;
+      color: #777;
+      margin: 0.5rem 0;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    
+    footer section.footer-company p:hover,
+    footer section.footer-support p:hover,
+    footer section.footer-connect p:hover {
+      color: #333;
+    }
+    
+    hr {
+      margin: 0;
+      border: none;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    section.footer-payment {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background-color: #f8f8f8;
+    }
+    
+    section.footer-payment p {
+      font-size: 0.9rem;
+      color: #777;
+      margin: 0;
+    }
+    
+    section.footer-payment ul {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    
+    section.footer-payment ul li a img {
+      width: 32px;
+      height: 32px;
+      transition: opacity 0.3s ease;
+    }
+    
+    section.footer-payment ul li a img:hover {
+      opacity: 0.8;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      header section h1 {
+        font-size: 2.5rem;
+      }
+      
+      section.brands {
+        gap: 1.5rem;
+      }
+      
+      section.brands p {
+        font-size: 1.2rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .dress-item {
+        height: 200px;
+      }
+      
+      section.newsletter h1 {
+        font-size: 1.7rem;
+      }
+      
+      footer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      footer section.footer {
+        grid-column: span 2;
+        margin-bottom: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+      
+      nav section ul {
+        gap: 0.5rem;
+      }
+      
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+      
+      header section {
+        margin-bottom: 2rem;
+      }
+      
+      header section h1 {
+        font-size: 2rem;
+      }
+      
+      header section ul {
+        justify-content: center;
+      }
+      
+      section.brands {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+      
+      section.brands p {
+        font-size: 1rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      section.new-arrivals,
+      section.style-container-product,
+      section.customer-section {
+        padding: 3rem 1rem;
+      }
+      
+      section.new-arrivals p,
+      section.style-container-product h2,
+      section.customer-section h1 {
+        font-size: 2rem;
+      }
+      
+      .product-container {
+        gap: 1rem;
+      }
+      
+      #product-item-casual,
+      #product-item-formal,
+      #product-item-party,
+      #product-item-gym {
+        grid-column: 1 / -1;
+        height: 200px;
+      }
+      
+      section.customer-review-item {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      section.newsletter {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      section.newsletter h1 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      
+      footer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 3rem 1.5rem 1.5rem 1.5rem;
+      }
+      
+      footer section.footer {
+        grid-column: span 1;
+      }
+      
+      section.footer-payment {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      section.footer-payment ul {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .mobile-menu-button {
+        display: block;
+      }
+      
+      nav {
+        justify-content: space-between;
+      }
+      
+      nav section:nth-child(2) {
+        display: none;
+      }
+      
+      nav section:nth-child(3) {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
+        display: none;
+      }
+      
+      nav section.little {
+        font-size: 1.5rem;
+      }
+      
+      nav section input[type="search"] {
+        width: 100%;
+      }
+      
+      nav.active section:nth-child(2),
+      nav.active section:nth-child(3) {
+        display: flex;
+      }
+      
+      nav.active section:nth-child(2) ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      nav.active section:nth-child(2) ul li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      header section h1 {
+        font-size: 1.8rem;
+      }
+      
+      header section small {
+        font-size: 1rem;
+      }
+      
+      header section ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      section.brands {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      section.new-arrivals p,
+      section.style-container-product h2,
+      section.customer-section h1 {
+        font-size: 1.8rem;
+      }
+      
+      section.customer-review-item {
+        grid-template-columns: 1fr;
+      }
+      
+      section.newsletter {
+        margin: 1.5rem 1rem;
+      }
+      
+      section.newsletter h1 {
+        font-size: 1.5rem;
+      }
+      
+      footer section.footer strong,
+      footer section.footer-company strong,
+      footer section.footer-support strong,
+      footer section.footer-connect strong {
+        margin-bottom: 1rem;
+      }
+      
+      section.footer-payment ul {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="mainNav">
+    <section class="little">
+      <div>Shop.co</div>
+    </section>
+    <button class="mobile-menu-button" id="menuToggle">☰</button>
+    <section>
+      <ul>
+        <li><a href="">Shop</a></li>
+        <li><a href="">On Sale</a></li>
+        <li><a href="">New Arrivals</a></li>
+        <li><a href="">Brands</a></li>
+      </ul>
+    </section>
+    <section>
+      <input type="search" placeholder="Search for products" />
+    </section>
+    <section>
+      <ul>
+        <li><a href=""><img src="https://placehold.co/24" alt="Shopping Cart"></a></li>
+        <li><a href=""><img src="https://placehold.co/24" alt="User Account"></a></li>
+      </ul>
+    </section>
+  </nav>
+  
+  <header>
+    <section>
+      <h1>FINE CLOTHES THAT MATCH YOUR STYLE</h1>
+      <small>Discover our curated collection of premium clothing designed to elevate your wardrobe. From casual essentials to statement pieces, find the perfect fit for your unique style.</small>
+      <div>
+        <a href="">Shop Now</a>
+      </div>
+      <ul>
+        <li>200+</li>
+        <li>2,000+</li>
+        <li>30,000+</li>
+      </ul>
+    </section>
+    
+    <section>
+      <img src="https://placehold.co/800" alt="Featured Fashion">
+    </section>
+  </header>
+  
+  <section class="brands">
+    <p>VERSACE</p>
+    <p>GUCCI</p>
+    <p>PRADA</p>
+    <p>LOUIS VUITTON</p>
+    <p>CHANEL</p>
+  </section>
+
+  <!-- New Arrivals section with product items -->
+  <section class="new-arrivals">
+    <p>New Arrivals</p>
+    <div class="product-grid">
+      <div class="product-item">
+        <img src="https://placehold.co/200" alt="Product 1">
+        <p>Classic White T-Shirt</p>
+        <p>$100</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="product-item">
+        <img src="https://placehold.co/200" alt="Product 2">
+        <p>Premium Denim Jeans</p>
+        <p>$85</p>
+        <p>⭐⭐⭐⭐</p>
+      </div>
+      <div class="product-item">
+        <img src="https://placehold.co/200" alt="Product 3">
+        <p>Casual Bomber Jacket</p>
+        <p>$120</p>
+        <p>⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="product-item">
+        <img src="https://placehold.co/200" alt="Product 4">
+        <p>Designer Sneakers</p>
+        <p>$95</p>
+        <p>⭐⭐⭐⭐</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="style-container-product">
+    <h2>STYLE</h2>
+    <section class="product-container">
+      <div id="product-item-casual" class="dress-item">
+        <p>casual</p>
+      </div>
+      <div id="product-item-formal" class="dress-item">
+        <p>formal</p>
+      </div>
+      <div id="product-item-party" class="dress-item">
+        <p>party</p>
+      </div>
+      <div id="product-item-gym" class="dress-item">
+        <p>gym</p>
+      </div>
+    </section>
+  </section>
+
+  <section class="customer-section">
+    <h1>OUR HAPPY CUSTOMERS</h1>
+    <section class="customer-review-item">
+      <section class="customer-review">
+        <small>⭐⭐⭐⭐⭐</small>
+        <h3>Sarah Johnson</h3>
+        <q>I absolutely love the quality of clothes from Shop.co! The fabrics are luxurious and the fit is perfect. Customer service was also exceptional when I needed to exchange a size.</q>
+      </section>
+      <section class="customer-review">
+        <small>⭐⭐⭐⭐</small>
+        <h3>Michael Chen</h3>
+        <q>The attention to detail in their clothes is remarkable. I've received so many compliments on my new jacket. Shipping was fast and the packaging was eco-friendly too!</q>
+      </section>
+      <section class="customer-review">
+        <small>⭐⭐⭐⭐⭐</small>
+        <h3>Emily Rodriguez</h3>
+        <q>Shop.co has completely transformed my wardrobe. Their style recommendations are spot-on and the quality is worth every penny. I'll be a customer for life!</q>
+      </section>
+    </section>
+  </section>
+
+  <section class="newsletter">
+    <h1>STAY UP TO DATE ABOUT OUR LATEST OFFERS</h1>
+    <form>
+      <input type="email" placeholder="Enter your email address" required>
+      <button type="submit">Subscribe to Newsletter</button>
+    </form>
+  </section>
+
+  <footer>
+    <section class="footer">
+      <strong>SHOP.CO</strong>
+      <q>We are a premier fashion destination offering carefully curated collections of stylish and high-quality clothing for the modern individual who appreciates both elegance and comfort.</q>
+      <ul>
+        <li><a href=""><img src="https://placehold.co/32" alt="Facebook"></a></li>
+        <li><a href=""><img src="https://placehold.co/32" alt="Instagram"></a></li>
+        <li><a href=""><img src="https://placehold.co/32" alt="Twitter"></a></li>
+        <li><a href=""><img src="https://placehold.co/32" alt="Pinterest"></a></li>
+      </ul>
+    </section>
+    <section class="footer-company">
+      <strong>COMPANY</strong>
+      <p>About</p>
+      <p>Contact</p>
+      <p>Terms & Conditions</p>
+      <p>Privacy Policy</p>
+    </section>
+    <section class="footer-support">
+      <strong>SUPPORT</strong>
+      <p>FAQ</p>
+      <p>Shipping & Returns</p>
+      <p>Size Guide</p>
+      <p>Customer Support</p>
+    </section>
+    <section class="footer-connect">
+      <strong>CONNECT</strong>
+      <p>Facebook</p>
+      <p>Instagram</p>
+      <p>Twitter</p>
+      <p>Pinterest</p>
+    </section>
+  </footer>
+  <hr>
+  <section class="footer-payment">
+    <p>© Shop.co 2000-2025 • All Rights Reserved</p>
+    <ul>
+      <li><a href=""><img src="https://placehold.co/32" alt="Visa"></a></li>
+      <li><a href=""><img src="https://placehold.co/32" alt="MasterCard"></a></li>
+      <li><a href=""><img src="https://placehold.co/32" alt="PayPal"></a></li>
+      <li><a href=""><img src="https://placehold.co/32" alt="American Express"></a></li>
+      </ul>
+  </section>
+</body>
+</html>
+

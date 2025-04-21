@@ -1,0 +1,51 @@
+---
+// ProductItem.astro component - put this in your components folder
+const { name, price, star, img } = Astro.props;
+---
+
+<div class="product-item">
+  <img src={img} alt={name}>
+  <p>{name}</p>
+  <p>{price}</p>
+  <p>{star}</p>
+</div>
+
+<style>
+  .product-item {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    padding-bottom: 1rem;
+  }
+  
+  .product-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .product-item p {
+    padding: 0 1rem;
+    margin: 0.7rem 0;
+  }
+  
+  .product-item p:nth-child(2) {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .product-item p:nth-child(3) {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .product-item p:last-child {
+    margin-bottom: 1rem;
+  }
+</style>
